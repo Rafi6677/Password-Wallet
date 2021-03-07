@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Password Wallet</string>
+    <string name="app_description">Secure app where You can safely store Your passwords</string>
+    <string name="login">Log in</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="no_account_question">Don\'t have account? Create one.</string>
+    <string name="already_have_account_question">Already have account? Log in.</string>
+    <string name="register">Register</string>
 </resources>
