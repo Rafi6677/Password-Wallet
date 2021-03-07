@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "main_access")
+@Entity(tableName = "access")
 data class Access(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
