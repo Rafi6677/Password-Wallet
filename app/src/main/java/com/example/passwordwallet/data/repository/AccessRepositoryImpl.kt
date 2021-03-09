@@ -6,6 +6,8 @@ import com.example.passwordwallet.domain.repository.AccessRepository
 
 class AccessRepositoryImpl(private val accessDataSource: AccessDataSource) : AccessRepository {
 
+    override suspend fun getMainAccess(mainAccessId: Int): Access = accessDataSource.getMainAccessFromDB(mainAccessId)
+
     override suspend fun saveAccess(access: Access) {
         accessDataSource.insertAccessIntoDB(access)
     }

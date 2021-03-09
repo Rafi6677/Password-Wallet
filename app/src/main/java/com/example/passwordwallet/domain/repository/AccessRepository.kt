@@ -4,6 +4,7 @@ import com.example.passwordwallet.data.db.model.Access
 
 interface AccessRepository {
 
+    suspend fun getMainAccess(mainAccessId: Int): Access
     suspend fun saveAccess(access: Access)
 
 }

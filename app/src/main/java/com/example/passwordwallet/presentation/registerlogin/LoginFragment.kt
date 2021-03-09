@@ -1,4 +1,4 @@
-package com.example.passwordwallet.presentation.login
+package com.example.passwordwallet.presentation.registerlogin
 
 import android.os.Bundle
 import android.view.LayoutInflater

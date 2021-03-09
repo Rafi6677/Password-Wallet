@@ -28,6 +28,8 @@ class PasswordRepositoryImpl(private val passwordDataSource: PasswordDataSource)
         return passwordList
     }
 
+    override suspend fun getMainPassword(): Password = passwordDataSource.getMainPasswordFromDB()
+
     override suspend fun savePassword(password: Password) {
         passwordDataSource.insertPasswordIntoDB(password)
     }

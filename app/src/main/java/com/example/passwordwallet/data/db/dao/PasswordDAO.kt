@@ -17,6 +17,9 @@ interface PasswordDAO {
     @Query("SELECT * FROM password")
     suspend fun getAllStoredPasswords(): List<Password>
 
+    @Query("SELECT * FROM password WHERE is_main_password = 1")
+    suspend fun getMainPassword(): Password
+
     @Insert
     suspend fun insertPassword(password: Password)
 

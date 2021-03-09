@@ -9,6 +9,8 @@ import kotlinx.coroutines.launch
 
 class AccessDataSourceImpl(private val dao: AccessDAO) : AccessDataSource {
 
+    override suspend fun getMainAccessFromDB(mainAccessId: Int): Access =  dao.getMainAccess(mainAccessId)
+
     override suspend fun insertAccessIntoDB(access: Access) {
         CoroutineScope(Dispatchers.IO).launch {
             dao.insertAccess(access)

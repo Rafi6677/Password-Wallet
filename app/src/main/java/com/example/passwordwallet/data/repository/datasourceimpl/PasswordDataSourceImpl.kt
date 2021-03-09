@@ -23,6 +23,8 @@ class PasswordDataSourceImpl(private val dao: PasswordDAO) : PasswordDataSource 
 
     override suspend fun getAllStoredPasswordsFromDB(): List<Password> = dao.getAllStoredPasswords()
 
+    override suspend fun getMainPasswordFromDB(mainAccessId: Int): Password = dao.getMainPassword()
+
     override suspend fun insertPasswordIntoDB(password: Password) {
         CoroutineScope(Dispatchers.IO).launch {
             dao.insertPassword(password)
