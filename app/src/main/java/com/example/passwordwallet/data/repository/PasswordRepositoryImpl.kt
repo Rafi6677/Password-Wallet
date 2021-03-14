@@ -4,34 +4,31 @@ import android.util.Log
 import com.example.passwordwallet.data.db.model.Password
 import com.example.passwordwallet.data.repository.datasource.PasswordDataSource
 import com.example.passwordwallet.domain.repository.PasswordRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class PasswordRepositoryImpl(private val passwordDataSource: PasswordDataSource) : PasswordRepository {
 
     override suspend fun deletePassword(password: Password) {
-        passwordDataSource.deletePasswordFromDB(password)
+        CoroutineScope(Dispatchers.IO).launch {
+            passwordDataSource.deletePasswordFromDB(password)
+        }
     }
 
     override suspend fun editPassword(password: Password) {
-        passwordDataSource.updatePasswordToDB(password)
-    }
-
-    override suspend fun getAllStoredPasswords(): List<Password> {
-        lateinit var passwordList: List<Password>
-
-        try {
-            passwordList = passwordDataSource.getAllStoredPasswordsFromDB()
-        } catch (e: Exception) {
-            Log.i("REPOSITORY_EXCEPTION", e.message.toString())
+        CoroutineScope(Dispatchers.IO).launch {
+            passwordDataSource.updatePasswordToDB(password)
         }
-
-        return passwordList
     }
 
-    override suspend fun getMainPassword(): Password = passwordDataSource.getMainPasswordFromDB()
+    override suspend fun getAllStoredPasswords(): List<Password> = passwordDataSource.getAllStoredPasswordsFromDB()
 
     override suspend fun savePassword(password: Password) {
-        passwordDataSource.insertPasswordIntoDB(password)
+        CoroutineScope(Dispatchers.IO).launch {
+            passwordDataSource.insertPasswordIntoDB(password)
+        }
     }
 
 }

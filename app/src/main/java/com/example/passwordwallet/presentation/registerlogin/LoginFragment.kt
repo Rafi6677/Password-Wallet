@@ -29,7 +29,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun initButtons() {
-        binding.noAccountTextViewButton.setOnClickListener {
+        binding.frameLoginLayout.noAccountTextViewButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }

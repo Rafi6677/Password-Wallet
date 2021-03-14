@@ -28,7 +28,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun initButtons() {
-        binding.alreadyHaveAccountTextViewButton.setOnClickListener {
+        binding.frameRegisterLayout.alreadyHaveAccountTextViewButton.setOnClickListener {
             requireActivity().onBackPressed()
         }
     }

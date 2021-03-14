@@ -1,11 +1,9 @@
 package com.example.passwordwallet.data.db.dao
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.passwordwallet.data.db.model.Password
 
+@Dao
 interface PasswordDAO {
 
     @Delete
@@ -14,11 +12,8 @@ interface PasswordDAO {
     @Update
     suspend fun updatePassword(password: Password)
 
-    @Query("SELECT * FROM password")
+    @Query("SELECT * FROM passwords")
     suspend fun getAllStoredPasswords(): List<Password>
-
-    @Query("SELECT * FROM password WHERE is_main_password = 1")
-    suspend fun getMainPassword(): Password
 
     @Insert
     suspend fun insertPassword(password: Password)

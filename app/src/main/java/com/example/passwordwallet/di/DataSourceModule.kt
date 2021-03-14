@@ -1,10 +1,10 @@
 package com.example.passwordwallet.di
 
-import com.example.passwordwallet.data.db.dao.AccessDAO
+import com.example.passwordwallet.data.db.dao.UserDAO
 import com.example.passwordwallet.data.db.dao.PasswordDAO
-import com.example.passwordwallet.data.repository.datasource.AccessDataSource
+import com.example.passwordwallet.data.repository.datasource.UserDataSource
 import com.example.passwordwallet.data.repository.datasource.PasswordDataSource
-import com.example.passwordwallet.data.repository.datasourceimpl.AccessDataSourceImpl
+import com.example.passwordwallet.data.repository.datasourceimpl.UserDataSourceImpl
 import com.example.passwordwallet.data.repository.datasourceimpl.PasswordDataSourceImpl
 import dagger.Module
 import dagger.Provides
@@ -18,8 +18,8 @@ class DataSourceModule {
 
     @Singleton
     @Provides
-    fun provideAccessDataSource(dao: AccessDAO): AccessDataSource {
-        return AccessDataSourceImpl(dao)
+    fun provideUserDataSource(dao: UserDAO): UserDataSource {
+        return UserDataSourceImpl(dao)
     }
 
     @Singleton

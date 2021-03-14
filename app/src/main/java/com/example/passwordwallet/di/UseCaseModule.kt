@@ -1,6 +1,6 @@
 package com.example.passwordwallet.di
 
-import com.example.passwordwallet.domain.repository.AccessRepository
+import com.example.passwordwallet.domain.repository.UserRepository
 import com.example.passwordwallet.domain.repository.PasswordRepository
 import com.example.passwordwallet.domain.usecase.*
 import dagger.Module
@@ -15,10 +15,10 @@ class UseCaseModule {
 
     @Singleton
     @Provides
-    fun provideSaveAccessUseCase(
-        accessRepository: AccessRepository
-    ): SaveAccessUseCase {
-        return SaveAccessUseCase(accessRepository)
+    fun provideAuthenticateUserUseCase(
+            userRepository: UserRepository
+    ): AuthenticateUserUseCase {
+        return AuthenticateUserUseCase(userRepository)
     }
 
     @Singleton
@@ -39,6 +39,14 @@ class UseCaseModule {
 
     @Singleton
     @Provides
+    fun provideEditUserUseCase(
+            userRepository: UserRepository
+    ): EditUserUseCase {
+        return EditUserUseCase(userRepository)
+    }
+
+    @Singleton
+    @Provides
     fun provideGetAllStoresPasswordsUseCase(
         passwordRepository: PasswordRepository
     ): GetAllStoredPasswordsUseCase {
@@ -47,10 +55,26 @@ class UseCaseModule {
 
     @Singleton
     @Provides
+    fun provideGetUserByIdUseCase(
+            userRepository: UserRepository
+    ): GetUserByIdUseCase {
+        return GetUserByIdUseCase(userRepository)
+    }
+
+    @Singleton
+    @Provides
     fun provideSavePasswordUseCase(
         passwordRepository: PasswordRepository
     ): SavePasswordUseCase {
         return SavePasswordUseCase(passwordRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideSaveUserUseCase(
+            userRepository: UserRepository
+    ): SaveUserUseCase {
+        return SaveUserUseCase(userRepository)
     }
 
 }

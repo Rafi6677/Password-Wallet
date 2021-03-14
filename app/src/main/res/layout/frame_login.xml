@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/_15sdp"
+    android:paddingEnd="@dimen/_15sdp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/login_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/user_login"
+        android:inputType="text"
+        android:textSize="@dimen/_20ssp" />
+
+    <EditText
+        android:id="@+id/password_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:textSize="@dimen/_20ssp" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/button_round"
+        android:text="@string/login"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_15ssp" />
+
+    <TextView
+        android:id="@+id/no_account_textViewButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:gravity="center"
+        android:text="@string/no_account_question"
+        android:textSize="@dimen/_12ssp" />
+
+</LinearLayout>

@@ -2,14 +2,14 @@ package com.example.passwordwallet.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.passwordwallet.data.db.dao.AccessDAO
+import com.example.passwordwallet.data.db.dao.UserDAO
 import com.example.passwordwallet.data.db.dao.PasswordDAO
-import com.example.passwordwallet.data.db.model.Access
+import com.example.passwordwallet.data.db.model.User
 import com.example.passwordwallet.data.db.model.Password
 
 @Database(
     entities = [
-        Access::class,
+        User::class,
         Password::class
     ],
     version = 1,
@@ -17,7 +17,7 @@ import com.example.passwordwallet.data.db.model.Password
 )
 abstract class PasswordWalletDataBase : RoomDatabase(){
 
-    abstract fun AccessDAO(): AccessDAO
+    abstract fun UserDAO(): UserDAO
     abstract fun PasswordDAO(): PasswordDAO
 
 }

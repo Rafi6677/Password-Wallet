@@ -10,25 +10,17 @@ import kotlinx.coroutines.launch
 class PasswordDataSourceImpl(private val dao: PasswordDAO) : PasswordDataSource {
 
     override suspend fun deletePasswordFromDB(password: Password) {
-        CoroutineScope(Dispatchers.IO).launch {
-            dao.deletePassword(password)
-        }
+        dao.deletePassword(password)
     }
 
     override suspend fun updatePasswordToDB(password: Password) {
-        CoroutineScope(Dispatchers.IO).launch {
-            dao.updatePassword(password)
-        }
+        dao.updatePassword(password)
     }
 
     override suspend fun getAllStoredPasswordsFromDB(): List<Password> = dao.getAllStoredPasswords()
 
-    override suspend fun getMainPasswordFromDB(mainAccessId: Int): Password = dao.getMainPassword()
-
     override suspend fun insertPasswordIntoDB(password: Password) {
-        CoroutineScope(Dispatchers.IO).launch {
-            dao.insertPassword(password)
-        }
+        dao.insertPassword(password)
     }
 
 }

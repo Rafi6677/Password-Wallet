@@ -1,10 +1,10 @@
 package com.example.passwordwallet.di
 
-import com.example.passwordwallet.data.repository.AccessRepositoryImpl
+import com.example.passwordwallet.data.repository.UserRepositoryImpl
 import com.example.passwordwallet.data.repository.PasswordRepositoryImpl
-import com.example.passwordwallet.data.repository.datasource.AccessDataSource
+import com.example.passwordwallet.data.repository.datasource.UserDataSource
 import com.example.passwordwallet.data.repository.datasource.PasswordDataSource
-import com.example.passwordwallet.domain.repository.AccessRepository
+import com.example.passwordwallet.domain.repository.UserRepository
 import com.example.passwordwallet.domain.repository.PasswordRepository
 import dagger.Module
 import dagger.Provides
@@ -18,8 +18,8 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideAccessRepository(accessDataSource: AccessDataSource): AccessRepository {
-        return AccessRepositoryImpl(accessDataSource)
+    fun provideUserRepository(userDataSource: UserDataSource): UserRepository {
+        return UserRepositoryImpl(userDataSource)
     }
 
     @Singleton

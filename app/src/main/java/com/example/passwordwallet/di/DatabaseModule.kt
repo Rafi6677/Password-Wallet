@@ -3,7 +3,7 @@ package com.example.passwordwallet.di
 import android.content.Context
 import androidx.room.Room
 import com.example.passwordwallet.data.db.PasswordWalletDataBase
-import com.example.passwordwallet.data.db.dao.AccessDAO
+import com.example.passwordwallet.data.db.dao.UserDAO
 import com.example.passwordwallet.data.db.dao.PasswordDAO
 import dagger.Module
 import dagger.Provides
@@ -28,8 +28,8 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideAccessDAO(passwordWalletDataBase: PasswordWalletDataBase): AccessDAO {
-        return passwordWalletDataBase.AccessDAO()
+    fun provideUserDAO(passwordWalletDataBase: PasswordWalletDataBase): UserDAO {
+        return passwordWalletDataBase.UserDAO()
     }
 
     @Singleton
