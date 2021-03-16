@@ -9,4 +9,6 @@
     <string name="no_account_question">Don\'t have account? Create one.</string>
     <string name="already_have_account_question">Already have account? Log in.</string>
     <string name="register">Register</string>
+    <string name="empty_data">All fields have to be filled</string>
+    <string name="diffrent_passwords">Given passwords are different</string>
 </resources>

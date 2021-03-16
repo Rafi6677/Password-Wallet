@@ -12,6 +12,7 @@ import com.example.passwordwallet.databinding.FragmentLoginBinding
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    private lateinit var viewModel: RegisterLoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +25,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
+        viewModel = (activity as RegisterLoginActivity).viewModel
 
         initButtons()
     }

@@ -13,11 +13,11 @@ android {
 
     defaultConfig {
         applicationId "com.example.passwordwallet"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        buildConfigField("String", "PEPPER", PEPPER)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
