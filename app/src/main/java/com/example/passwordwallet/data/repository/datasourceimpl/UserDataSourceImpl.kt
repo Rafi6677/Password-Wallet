@@ -17,6 +17,8 @@ class UserDataSourceImpl(private val dao: UserDAO) : UserDataSource {
 
     override suspend fun getUserByIdFromDB(id: Int): User = dao.getUserById(id)
 
+    override suspend fun getUserByLoginFromDB(login: String): User = dao.getUserByLogin(login)
+
     override suspend fun insertUserIntoDB(user: User) {
         dao.insertUser(user)
     }

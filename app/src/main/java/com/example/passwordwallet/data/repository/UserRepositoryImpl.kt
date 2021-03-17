@@ -19,6 +19,8 @@ class UserRepositoryImpl(private val userDataSource: UserDataSource) : UserRepos
 
     override suspend fun getUserById(id: Int): User = userDataSource.getUserByIdFromDB(id)
 
+    override suspend fun getUserByLogin(login: String): User = userDataSource.getUserByLoginFromDB(login)
+
     override suspend fun saveUser(user: User) {
         CoroutineScope(Dispatchers.IO).launch {
             userDataSource.insertUserIntoDB(user)

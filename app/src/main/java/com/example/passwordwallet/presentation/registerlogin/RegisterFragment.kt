@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.passwordwallet.R
 import com.example.passwordwallet.data.auth.AuthenticationOperations
 import com.example.passwordwallet.databinding.FragmentRegisterBinding
@@ -57,16 +58,30 @@ class RegisterFragment : Fragment() {
             return
         }
 
+        (activity as RegisterLoginActivity).showProgressBar()
+
         val salt = AuthenticationOperations.generateSalt(30)
         val securePassword = AuthenticationOperations.generateSecurePassword(password, salt)
         val repeatedSecurePassword = AuthenticationOperations.generateSecurePassword(repeatedPassword, salt)
 
-        if (AuthenticationOperations.verifyUserPassword(securePassword, repeatedSecurePassword, salt)) {
-            viewModel.registerUser(login, securePassword, salt, keepPasswordAsHash)
-        } else {
-            Toast.makeText(activity, resources.getString(R.string.diffrent_passwords), Toast.LENGTH_SHORT)
+        if (securePassword != repeatedSecurePassword) {
+            Toast.makeText(activity, resources.getString(R.string.different_passwords), Toast.LENGTH_SHORT)
                 .show()
+
+            (activity as RegisterLoginActivity).hideProgressBar()
+            return
         }
+
+        viewModel.getUserByLogin(login).observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                Toast.makeText(activity, resources.getString(R.string.login_exists), Toast.LENGTH_SHORT)
+                        .show()
+                (activity as RegisterLoginActivity).hideProgressBar()
+            } else {
+                viewModel.registerUser(login, securePassword, salt, keepPasswordAsHash)
+                (activity as RegisterLoginActivity).hideProgressBar()
+            }
+        })
     }
 
 }

@@ -16,7 +16,7 @@ class UseCaseModule {
     @Singleton
     @Provides
     fun provideAuthenticateUserUseCase(
-            userRepository: UserRepository
+        userRepository: UserRepository
     ): AuthenticateUserUseCase {
         return AuthenticateUserUseCase(userRepository)
     }
@@ -59,6 +59,14 @@ class UseCaseModule {
             userRepository: UserRepository
     ): GetUserByIdUseCase {
         return GetUserByIdUseCase(userRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetUserByLoginUseCase(
+            userRepository: UserRepository
+    ): GetUserByLoginUseCase {
+        return GetUserByLoginUseCase(userRepository)
     }
 
     @Singleton

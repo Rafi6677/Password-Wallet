@@ -18,6 +18,9 @@ interface UserDAO {
     @Query("SELECT * FROM users WHERE id = :id")
     suspend fun getUserById(id: Int): User
 
+    @Query("SELECT * FROM users WHERE login = :login")
+    suspend fun getUserByLogin(login: String): User
+
     @Insert
     suspend fun insertUser(user: User)
 
