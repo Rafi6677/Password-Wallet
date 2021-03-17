@@ -13,4 +13,8 @@
     <string name="different_passwords">Given passwords are different</string>
     <string name="login_exists">User with that login already exists</string>
     <string name="wrong_data">Wrong login or password</string>
+    <string name="exit">Exit</string>
+    <string name="exit_question">Exit app?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

@@ -80,6 +80,7 @@ class RegisterFragment : Fragment() {
             } else {
                 viewModel.registerUser(login, securePassword, salt, keepPasswordAsHash)
                 (activity as RegisterLoginActivity).hideProgressBar()
+                (activity as RegisterLoginActivity).logIntoApp(login)
             }
         })
     }

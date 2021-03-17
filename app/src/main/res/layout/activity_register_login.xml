@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frame_title_layout"
-        app:navGraph="@navigation/nav_graph" />
+        app:navGraph="@navigation/authentication_nav_graph" />
 
     <ProgressBar
         android:id="@+id/progressBar"

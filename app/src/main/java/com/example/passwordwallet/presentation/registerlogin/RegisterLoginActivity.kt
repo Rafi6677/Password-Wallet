@@ -1,11 +1,13 @@
 package com.example.passwordwallet.presentation.registerlogin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import com.example.passwordwallet.R
 import com.example.passwordwallet.databinding.ActivityRegisterLoginBinding
+import com.example.passwordwallet.presentation.passwords.PasswordsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +32,18 @@ class RegisterLoginActivity : AppCompatActivity() {
 
     fun hideProgressBar() {
         binding.progressBar.visibility = View.INVISIBLE
+    }
+
+    fun logIntoApp(login: String) {
+        val bundle = Bundle().apply {
+            putString("login", login)
+        }
+        val intent = Intent(this, PasswordsActivity::class.java).apply {
+            putExtras(bundle)
+            addCategory(Intent.CATEGORY_HOME)
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }
+        startActivity(intent)
     }
 
 }

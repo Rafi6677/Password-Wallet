@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav_graph"
+    app:startDestination="@id/passwordsListFragment">
+
+    <fragment
+        android:id="@+id/passwordsListFragment"
+        android:name="com.example.passwordwallet.presentation.passwords.list.PasswordsListFragment"
+        android:label="PasswordsListFragment" >
+        <action
+            android:id="@+id/action_passwordsListFragment_to_passwordDetailsFragment"
+            app:destination="@id/passwordDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordDetailsFragment"
+        android:name="com.example.passwordwallet.presentation.passwords.details.PasswordDetailsFragment"
+        android:label="PasswordDetailsFragment" />
+</navigation>
