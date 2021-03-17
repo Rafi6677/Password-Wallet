@@ -12,4 +12,5 @@
     <string name="empty_data">All fields have to be filled</string>
     <string name="different_passwords">Given passwords are different</string>
     <string name="login_exists">User with that login already exists</string>
+    <string name="wrong_data">Wrong login or password</string>
 </resources>

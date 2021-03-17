@@ -55,6 +55,7 @@ object AuthenticationOperations {
         securedPassword: String,
         salt: String
     ): Boolean {
+        val user = generateSecurePassword(providedPassword, salt)
         return generateSecurePassword(providedPassword, salt)
             .equals(securedPassword, ignoreCase = true)
     }

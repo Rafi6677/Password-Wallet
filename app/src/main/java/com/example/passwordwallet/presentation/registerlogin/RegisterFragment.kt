@@ -72,8 +72,8 @@ class RegisterFragment : Fragment() {
             return
         }
 
-        viewModel.getUserByLogin(login).observe(viewLifecycleOwner, Observer {
-            if (it != null) {
+        viewModel.getUserByLogin(login).observe(viewLifecycleOwner, Observer { user ->
+            if (user != null) {
                 Toast.makeText(activity, resources.getString(R.string.login_exists), Toast.LENGTH_SHORT)
                         .show()
                 (activity as RegisterLoginActivity).hideProgressBar()

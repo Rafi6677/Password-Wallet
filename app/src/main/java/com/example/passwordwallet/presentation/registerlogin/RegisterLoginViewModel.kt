@@ -30,10 +30,6 @@ class RegisterLoginViewModel @Inject constructor(
     private val saveUserUseCase: SaveUserUseCase
 ) : ViewModel() {
 
-    fun authenticateUser(login: String, password: String) {
-
-    }
-
     fun getUserByLogin(login: String): LiveData<User> {
         val user = MutableLiveData<User>()
         viewModelScope.launch {
