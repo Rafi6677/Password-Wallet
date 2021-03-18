@@ -17,4 +17,8 @@
     <string name="exit_question">Exit app?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="no_passwords_stored">You don\'t have any password saved.</string>
+    <string name="account_name">Account name</string>
+    <string name="description">Description</string>
+    <string name="save_password">Save password</string>
 </resources>

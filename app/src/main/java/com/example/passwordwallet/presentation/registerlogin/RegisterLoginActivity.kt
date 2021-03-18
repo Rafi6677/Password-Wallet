@@ -44,6 +44,7 @@ class RegisterLoginActivity : AppCompatActivity() {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         }
         startActivity(intent)
+        finish()
     }
 
 }

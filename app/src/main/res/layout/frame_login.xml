@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/user_login"
         android:inputType="text"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20ssp" />
 
     <EditText
@@ -22,6 +23,7 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:inputType="textPassword"
         android:hint="@string/password"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20ssp" />
 
     <Button
@@ -31,6 +33,7 @@
         android:layout_marginTop="@dimen/_30sdp"
         android:background="@drawable/button_round"
         android:text="@string/login"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:textSize="@dimen/_15ssp" />
 
@@ -41,6 +44,7 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:gravity="center"
         android:text="@string/no_account_question"
+        android:textColor="@color/blue"
         android:textSize="@dimen/_12ssp" />
 
 </LinearLayout>

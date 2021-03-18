@@ -2,22 +2,20 @@ package com.example.passwordwallet.presentation.passwords
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.example.passwordwallet.R
 
 class PasswordsActivity : AppCompatActivity() {
 
     lateinit var userLogin: String
+    val viewmodel by viewModels<PasswordsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_passwords)
 
         getUserLogin()
-    }
-
-    override fun onBackPressed() {
-        showExitDialog()
     }
 
     private fun getUserLogin() {

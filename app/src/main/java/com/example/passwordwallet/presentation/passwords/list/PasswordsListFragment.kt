@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.passwordwallet.R
 import com.example.passwordwallet.databinding.FragmentPasswordsListBinding
 
@@ -24,6 +25,14 @@ class PasswordsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentPasswordsListBinding.bind(view)
+
+        initButtons()
+    }
+
+    private fun initButtons() {
+        binding.addPasswordButton.setOnClickListener {
+            findNavController().navigate(R.id.action_passwordsListFragment_to_passwordDetailsFragment)
+        }
     }
 
 }

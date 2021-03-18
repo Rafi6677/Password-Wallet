@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/user_login"
         android:inputType="text"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20ssp" />
 
     <EditText
@@ -24,6 +25,7 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:inputType="textPassword"
         android:hint="@string/password"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20ssp" />
 
     <EditText
@@ -33,6 +35,7 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:inputType="textPassword"
         android:hint="@string/password"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20ssp" />
 
     <androidx.appcompat.widget.SwitchCompat
@@ -42,6 +45,7 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:text="@string/keep_password_hashed"
         android:textSize="@dimen/_12ssp"
+        android:textColor="@color/black"
         android:checked="true"/>
 
     <Button
@@ -51,6 +55,7 @@
         android:layout_marginTop="@dimen/_30sdp"
         android:background="@drawable/button_round"
         android:text="@string/register"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:textSize="@dimen/_15ssp" />
 
@@ -61,6 +66,7 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:gravity="center"
         android:text="@string/already_have_account_question"
-        android:textSize="@dimen/_12ssp" />
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/blue"/>
 
 </LinearLayout>
