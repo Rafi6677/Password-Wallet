@@ -66,7 +66,7 @@ class LoginFragment : Fragment() {
 
                 if (AuthenticationOperations.verifyUserPassword(givenPassword, userPassword, salt)) {
                     (activity as RegisterLoginActivity).hideProgressBar()
-                    (activity as RegisterLoginActivity).logIntoApp(login)
+                    (activity as RegisterLoginActivity).logIntoApp(user)
                 } else {
                     Toast.makeText(activity, resources.getString(R.string.wrong_data), Toast.LENGTH_SHORT)
                             .show()

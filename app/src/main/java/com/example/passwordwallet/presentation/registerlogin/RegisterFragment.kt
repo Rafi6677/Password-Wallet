@@ -74,13 +74,19 @@ class RegisterFragment : Fragment() {
 
         viewModel.getUserByLogin(login).observe(viewLifecycleOwner, Observer { user ->
             if (user != null) {
+                (activity as RegisterLoginActivity).hideProgressBar()
+
                 Toast.makeText(activity, resources.getString(R.string.login_exists), Toast.LENGTH_SHORT)
                         .show()
-                (activity as RegisterLoginActivity).hideProgressBar()
             } else {
-                viewModel.registerUser(login, securePassword, salt, keepPasswordAsHash)
-                (activity as RegisterLoginActivity).hideProgressBar()
-                (activity as RegisterLoginActivity).logIntoApp(login)
+                val registeredUser = viewModel.registerUser(
+                    login,
+                    securePassword,
+                    salt,
+                    keepPasswordAsHash
+                )
+
+                (activity as RegisterLoginActivity).logIntoApp(registeredUser)
             }
         })
     }

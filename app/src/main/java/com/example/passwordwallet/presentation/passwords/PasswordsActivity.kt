@@ -5,11 +5,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.example.passwordwallet.R
+import com.example.passwordwallet.data.db.model.User
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PasswordsActivity : AppCompatActivity() {
 
-    lateinit var userLogin: String
-    val viewmodel by viewModels<PasswordsViewModel>()
+    lateinit var user: User
+    val viewModel by viewModels<PasswordsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +23,8 @@ class PasswordsActivity : AppCompatActivity() {
 
     private fun getUserLogin() {
         val bundle = intent.extras!!
-        userLogin = bundle.getString("login")!!
-        supportActionBar!!.title = "User: $userLogin"
+        user = bundle.getSerializable("user") as User
+        supportActionBar!!.title = "User: ${user.login}"
     }
 
     private fun showExitDialog() {

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import com.example.passwordwallet.R
+import com.example.passwordwallet.data.db.model.User
 import com.example.passwordwallet.databinding.ActivityRegisterLoginBinding
 import com.example.passwordwallet.presentation.passwords.PasswordsActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,9 +35,9 @@ class RegisterLoginActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.INVISIBLE
     }
 
-    fun logIntoApp(login: String) {
+    fun logIntoApp(user: User) {
         val bundle = Bundle().apply {
-            putString("login", login)
+            putSerializable("user", user)
         }
         val intent = Intent(this, PasswordsActivity::class.java).apply {
             putExtras(bundle)

@@ -12,8 +12,8 @@ interface PasswordDAO {
     @Update
     suspend fun updatePassword(password: Password)
 
-    @Query("SELECT * FROM passwords")
-    suspend fun getAllStoredPasswords(): List<Password>
+    @Query("SELECT * FROM passwords WHERE user_id = :userId")
+    suspend fun getAllStoredPasswords(userId: Int): List<Password>
 
     @Insert
     suspend fun insertPassword(password: Password)

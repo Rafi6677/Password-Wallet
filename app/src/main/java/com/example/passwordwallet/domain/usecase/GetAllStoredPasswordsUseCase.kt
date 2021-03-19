@@ -5,6 +5,6 @@ import com.example.passwordwallet.domain.repository.PasswordRepository
 
 class GetAllStoredPasswordsUseCase(private val passwordRepository: PasswordRepository) {
 
-    suspend fun execute() = passwordRepository.getAllStoredPasswords()
+    suspend fun execute(userId: Int) = passwordRepository.getAllStoredPasswords(userId)
 
 }

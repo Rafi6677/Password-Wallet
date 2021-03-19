@@ -1,11 +1,11 @@
 package com.example.passwordwallet.presentation.passwords
 
 import androidx.lifecycle.ViewModel
-import com.example.passwordwallet.domain.usecase.DeletePasswordUseCase
-import com.example.passwordwallet.domain.usecase.EditPasswordUseCase
-import com.example.passwordwallet.domain.usecase.GetAllStoredPasswordsUseCase
-import com.example.passwordwallet.domain.usecase.SavePasswordUseCase
+import androidx.lifecycle.viewModelScope
+import com.example.passwordwallet.data.db.model.Password
+import com.example.passwordwallet.domain.usecase.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,6 +16,17 @@ class PasswordsViewModel @Inject constructor(
     private val savePasswordUseCase: SavePasswordUseCase
 ) : ViewModel() {
 
+    fun savePassword(
+        hashedPassword: String,
+        userId: Int,
+        accountName: String,
+        description: String
+    ) {
+        val password = Password(0, hashedPassword, userId, accountName, description)
 
+        viewModelScope.launch {
+            savePasswordUseCase.execute(password)
+        }
+    }
 
 }

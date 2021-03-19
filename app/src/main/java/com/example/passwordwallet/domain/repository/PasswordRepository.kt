@@ -6,7 +6,7 @@ interface PasswordRepository {
 
     suspend fun deletePassword(password: Password)
     suspend fun editPassword(password: Password)
-    suspend fun getAllStoredPasswords(): List<Password>
+    suspend fun getAllStoredPasswords(userId: Int): List<Password>
     suspend fun savePassword(password: Password)
 
 }

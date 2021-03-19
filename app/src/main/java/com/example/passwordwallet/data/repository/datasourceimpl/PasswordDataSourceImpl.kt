@@ -17,7 +17,7 @@ class PasswordDataSourceImpl(private val dao: PasswordDAO) : PasswordDataSource 
         dao.updatePassword(password)
     }
 
-    override suspend fun getAllStoredPasswordsFromDB(): List<Password> = dao.getAllStoredPasswords()
+    override suspend fun getAllStoredPasswordsFromDB(userId: Int): List<Password> = dao.getAllStoredPasswords(userId)
 
     override suspend fun insertPasswordIntoDB(password: Password) {
         dao.insertPassword(password)

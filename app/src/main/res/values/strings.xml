@@ -9,7 +9,7 @@
     <string name="no_account_question">Don\'t have account? Create one.</string>
     <string name="already_have_account_question">Already have account? Log in.</string>
     <string name="register">Register</string>
-    <string name="empty_data">All fields have to be filled</string>
+    <string name="empty_data">Some fields are empty</string>
     <string name="different_passwords">Given passwords are different</string>
     <string name="login_exists">User with that login already exists</string>
     <string name="wrong_data">Wrong login or password</string>
@@ -20,5 +20,7 @@
     <string name="no_passwords_stored">You don\'t have any password saved.</string>
     <string name="account_name">Account name</string>
     <string name="description">Description</string>
+    <string name="description_optional">Description (optional)</string>
     <string name="save_password">Save password</string>
+    <string name="error_login">Error occurred during login process</string>
 </resources>

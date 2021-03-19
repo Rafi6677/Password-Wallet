@@ -44,11 +44,12 @@ class RegisterLoginViewModel @Inject constructor(
         password: String,
         salt: String,
         isPasswordKeptAsHash: Boolean
-    ) {
+    ): User {
         val user = User(0, login, password, salt, isPasswordKeptAsHash)
         viewModelScope.launch {
             saveUserUseCase.execute(user)
         }
+        return user
     }
 
 }

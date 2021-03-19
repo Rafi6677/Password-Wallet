@@ -23,7 +23,7 @@ class PasswordRepositoryImpl(private val passwordDataSource: PasswordDataSource)
         }
     }
 
-    override suspend fun getAllStoredPasswords(): List<Password> = passwordDataSource.getAllStoredPasswordsFromDB()
+    override suspend fun getAllStoredPasswords(userId: Int): List<Password> = passwordDataSource.getAllStoredPasswordsFromDB(userId)
 
     override suspend fun savePassword(password: Password) {
         CoroutineScope(Dispatchers.IO).launch {

@@ -40,7 +40,7 @@ class UseCaseModule {
     @Singleton
     @Provides
     fun provideEditUserUseCase(
-            userRepository: UserRepository
+        userRepository: UserRepository
     ): EditUserUseCase {
         return EditUserUseCase(userRepository)
     }
@@ -56,7 +56,7 @@ class UseCaseModule {
     @Singleton
     @Provides
     fun provideGetUserByIdUseCase(
-            userRepository: UserRepository
+        userRepository: UserRepository
     ): GetUserByIdUseCase {
         return GetUserByIdUseCase(userRepository)
     }
@@ -64,7 +64,7 @@ class UseCaseModule {
     @Singleton
     @Provides
     fun provideGetUserByLoginUseCase(
-            userRepository: UserRepository
+        userRepository: UserRepository
     ): GetUserByLoginUseCase {
         return GetUserByLoginUseCase(userRepository)
     }
@@ -80,7 +80,7 @@ class UseCaseModule {
     @Singleton
     @Provides
     fun provideSaveUserUseCase(
-            userRepository: UserRepository
+        userRepository: UserRepository
     ): SaveUserUseCase {
         return SaveUserUseCase(userRepository)
     }

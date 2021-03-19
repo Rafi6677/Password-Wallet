@@ -42,7 +42,7 @@ object AuthenticationOperations {
     }
 
     fun generateSecurePassword(password: String, salt: String): String {
-        var returnValue: String? = null
+        val returnValue: String?
         val securePassword = hashPassword(password.toCharArray(), salt.toByteArray())
 
         returnValue = Base64.getEncoder().encodeToString(securePassword)
@@ -55,7 +55,6 @@ object AuthenticationOperations {
         securedPassword: String,
         salt: String
     ): Boolean {
-        val user = generateSecurePassword(providedPassword, salt)
         return generateSecurePassword(providedPassword, salt)
             .equals(securedPassword, ignoreCase = true)
     }
