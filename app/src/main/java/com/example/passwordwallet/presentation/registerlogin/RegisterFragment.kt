@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.passwordwallet.R
-import com.example.passwordwallet.data.auth.AuthenticationOperations
+import com.example.passwordwallet.data.auth.UserAuth
 import com.example.passwordwallet.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -60,9 +60,9 @@ class RegisterFragment : Fragment() {
 
         (activity as RegisterLoginActivity).showProgressBar()
 
-        val salt = AuthenticationOperations.generateSalt(30)
-        val securePassword = AuthenticationOperations.generateSecurePassword(password, salt)
-        val repeatedSecurePassword = AuthenticationOperations.generateSecurePassword(repeatedPassword, salt)
+        val salt = UserAuth.generateSalt(30)
+        val securePassword = UserAuth.generateSecureUserPassword(password, salt)
+        val repeatedSecurePassword = UserAuth.generateSecureUserPassword(repeatedPassword, salt)
 
         if (securePassword != repeatedSecurePassword) {
             Toast.makeText(activity, resources.getString(R.string.different_passwords), Toast.LENGTH_SHORT)

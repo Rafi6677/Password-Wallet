@@ -4,18 +4,17 @@ import java.security.NoSuchAlgorithmException
 import java.security.SecureRandom
 import java.security.spec.InvalidKeySpecException
 import java.util.*
-import javax.crypto.SecretKeyFactory
+import javax.crypto.*
 import javax.crypto.spec.PBEKeySpec
 
-
-object AuthenticationOperations {
+object UserAuth {
 
     private val RANDOM: Random = SecureRandom()
     private const val ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     private const val ITERATIONS = 10000
     private const val KEY_LENGTH = 256
 
-    private fun hashPassword(password: CharArray, salt: ByteArray): ByteArray {
+    private fun hashUserPassword(password: CharArray, salt: ByteArray): ByteArray {
         val spec = PBEKeySpec(password, salt, ITERATIONS, KEY_LENGTH)
         Arrays.fill(password, Character.MIN_VALUE)
 
@@ -41,9 +40,9 @@ object AuthenticationOperations {
         return String(returnValue)
     }
 
-    fun generateSecurePassword(password: String, salt: String): String {
+    fun generateSecureUserPassword(password: String, salt: String): String {
         val returnValue: String?
-        val securePassword = hashPassword(password.toCharArray(), salt.toByteArray())
+        val securePassword = hashUserPassword(password.toCharArray(), salt.toByteArray())
 
         returnValue = Base64.getEncoder().encodeToString(securePassword)
 
@@ -51,12 +50,11 @@ object AuthenticationOperations {
     }
 
     fun verifyUserPassword(
-        providedPassword: String,
-        securedPassword: String,
-        salt: String
+            providedPassword: String,
+            securedPassword: String,
+            salt: String
     ): Boolean {
-        return generateSecurePassword(providedPassword, salt)
+        return generateSecureUserPassword(providedPassword, salt)
             .equals(securedPassword, ignoreCase = true)
     }
-
 }

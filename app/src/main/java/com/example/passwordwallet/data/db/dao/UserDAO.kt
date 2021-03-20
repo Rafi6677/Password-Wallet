@@ -25,6 +25,6 @@ interface UserDAO {
     suspend fun getUserSalt(login: String): String
 
     @Insert
-    suspend fun insertUser(user: User)
+    suspend fun insertUser(user: User): Long
 
 }

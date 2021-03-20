@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import com.example.passwordwallet.BuildConfig
 import com.example.passwordwallet.R
-import com.example.passwordwallet.data.auth.AuthenticationOperations
+import com.example.passwordwallet.data.auth.AESUtils
+import com.example.passwordwallet.data.auth.UserAuth
 import com.example.passwordwallet.databinding.FragmentPasswordDetailsBinding
 import com.example.passwordwallet.presentation.passwords.PasswordsActivity
 import com.example.passwordwallet.presentation.passwords.PasswordsViewModel
@@ -54,7 +55,19 @@ class PasswordDetailsFragment : Fragment() {
 
         val user = (activity as PasswordsActivity).user
         val userId = user.id
-        val hashedPassword = AuthenticationOperations.generateSecurePassword(password, user.salt)
+        val key = AESUtils.encrypt(user.passwordHash, BuildConfig.PEPPER)
+
+        var hashedPassword: String? = null
+
+        if (key != null) {
+            hashedPassword = AESUtils.encrypt(password, key)
+        }
+
+        if (key == null || hashedPassword == null) {
+            Toast.makeText(activity, resources.getString(R.string.error_encrypting), Toast.LENGTH_SHORT)
+                    .show()
+            return
+        }
 
         viewModel.savePassword(hashedPassword, userId, accountName, description)
         (activity as PasswordsActivity).onBackPressed()

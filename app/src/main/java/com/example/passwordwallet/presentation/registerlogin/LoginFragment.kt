@@ -9,9 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.passwordwallet.R
-import com.example.passwordwallet.data.auth.AuthenticationOperations
+import com.example.passwordwallet.data.auth.UserAuth
 import com.example.passwordwallet.databinding.FragmentLoginBinding
-import kotlin.math.log
 
 class LoginFragment : Fragment() {
 
@@ -64,7 +63,7 @@ class LoginFragment : Fragment() {
                 val userPassword = user.passwordHash
                 val salt = user.salt
 
-                if (AuthenticationOperations.verifyUserPassword(givenPassword, userPassword, salt)) {
+                if (UserAuth.verifyUserPassword(givenPassword, userPassword, salt)) {
                     (activity as RegisterLoginActivity).hideProgressBar()
                     (activity as RegisterLoginActivity).logIntoApp(user)
                 } else {

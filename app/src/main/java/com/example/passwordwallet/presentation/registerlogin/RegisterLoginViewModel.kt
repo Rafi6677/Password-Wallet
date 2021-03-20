@@ -4,22 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.passwordwallet.data.auth.AuthenticationOperations
 import com.example.passwordwallet.data.db.model.User
 import com.example.passwordwallet.domain.usecase.AuthenticateUserUseCase
 import com.example.passwordwallet.domain.usecase.GetUserByLoginUseCase
-import com.example.passwordwallet.domain.usecase.SavePasswordUseCase
 import com.example.passwordwallet.domain.usecase.SaveUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.lang.RuntimeException
-import java.math.BigInteger
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 import javax.inject.Inject
 import kotlin.math.log
 
@@ -46,10 +36,13 @@ class RegisterLoginViewModel @Inject constructor(
         isPasswordKeptAsHash: Boolean
     ): User {
         val user = User(0, login, password, salt, isPasswordKeptAsHash)
+        val userId = MutableLiveData<Int>()
         viewModelScope.launch {
-            saveUserUseCase.execute(user)
+            val createdUserId = saveUserUseCase.execute(user)
+            userId.postValue(createdUserId.toInt())
         }
-        return user
+
+        return User(userId.value!!, login, password, salt, isPasswordKeptAsHash)
     }
 
 }

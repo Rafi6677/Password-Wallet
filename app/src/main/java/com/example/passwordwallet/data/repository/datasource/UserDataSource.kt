@@ -8,6 +8,6 @@ interface UserDataSource {
     suspend fun updateUserToDB(user: User)
     suspend fun getUserByIdFromDB(id: Int): User
     suspend fun getUserByLoginFromDB(login: String): User
-    suspend fun insertUserIntoDB(user: User)
+    suspend fun insertUserIntoDB(user: User): Long
 
 }
