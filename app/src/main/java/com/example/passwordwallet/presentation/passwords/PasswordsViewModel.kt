@@ -1,8 +1,10 @@
 package com.example.passwordwallet.presentation.passwords
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.passwordwallet.data.db.model.Password
+import com.example.passwordwallet.data.db.model.User
 import com.example.passwordwallet.domain.usecase.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,6 +18,8 @@ class PasswordsViewModel @Inject constructor(
     private val savePasswordUseCase: SavePasswordUseCase
 ) : ViewModel() {
 
+    val passwordsList = MutableLiveData<List<Password>>()
+
     fun savePassword(
         hashedPassword: String,
         userId: Int,
@@ -26,6 +30,12 @@ class PasswordsViewModel @Inject constructor(
 
         viewModelScope.launch {
             savePasswordUseCase.execute(password)
+        }
+    }
+
+    fun getPasswordsList(user: User) {
+        viewModelScope.launch {
+            passwordsList.value = getAllStoredPasswordsUseCase.execute(user.id)
         }
     }
 
