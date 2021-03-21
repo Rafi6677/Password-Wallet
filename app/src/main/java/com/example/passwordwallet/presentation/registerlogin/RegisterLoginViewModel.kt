@@ -34,7 +34,7 @@ class RegisterLoginViewModel @Inject constructor(
         password: String,
         salt: String,
         isPasswordKeptAsHash: Boolean
-    ): User {
+    ): LiveData<Int> {
         val user = User(0, login, password, salt, isPasswordKeptAsHash)
         val userId = MutableLiveData<Int>()
         viewModelScope.launch {
@@ -42,7 +42,7 @@ class RegisterLoginViewModel @Inject constructor(
             userId.postValue(createdUserId.toInt())
         }
 
-        return User(userId.value!!, login, password, salt, isPasswordKeptAsHash)
+        return userId
     }
 
 }

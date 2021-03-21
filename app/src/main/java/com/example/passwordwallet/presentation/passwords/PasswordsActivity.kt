@@ -1,9 +1,12 @@
 package com.example.passwordwallet.presentation.passwords
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.passwordwallet.R
 import com.example.passwordwallet.data.db.model.User
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +39,16 @@ class PasswordsActivity : AppCompatActivity() {
             }
             setNegativeButton(resources.getString(R.string.no)) { _, _ -> }
         }.show()
+    }
+
+    fun closeKeyboard() {
+        val view: View? = this.currentFocus
+
+        if (view != null) {
+            val manager: InputMethodManager = getSystemService(
+                    Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            manager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 
 }

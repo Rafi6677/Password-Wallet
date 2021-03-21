@@ -1,5 +1,7 @@
 package com.example.passwordwallet.presentation.passwords.list
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.passwordwallet.BuildConfig
 import com.example.passwordwallet.R
+import com.example.passwordwallet.data.auth.AESUtils
 import com.example.passwordwallet.data.db.model.Password
 import com.example.passwordwallet.databinding.FragmentPasswordsListBinding
 import com.example.passwordwallet.presentation.passwords.PasswordsActivity
@@ -41,6 +45,7 @@ class PasswordsListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        (activity as PasswordsActivity).closeKeyboard()
         passwordsAdapter.notifyDataSetChanged()
     }
 
@@ -75,7 +80,13 @@ class PasswordsListFragment : Fragment() {
     }
 
     private fun onPasswordClickListener(password: Password) {
+        val hash = AESUtils.encrypt((activity as PasswordsActivity).user.passwordHash, BuildConfig.PEPPER)
+        val decryptedPassword = AESUtils.decrypt(password.password, hash!!)
 
+        AlertDialog.Builder(activity as PasswordsActivity)
+            .setTitle(password.accountName)
+            .setMessage("Your password is: $decryptedPassword")
+            .show()
     }
 
     private fun manageNoPasswordInfoVisibility() {

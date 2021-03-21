@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.passwordwallet.R
 import com.example.passwordwallet.data.auth.UserAuth
+import com.example.passwordwallet.data.db.model.User
 import com.example.passwordwallet.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -79,14 +80,11 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(activity, resources.getString(R.string.login_exists), Toast.LENGTH_SHORT)
                         .show()
             } else {
-                val registeredUser = viewModel.registerUser(
-                    login,
-                    securePassword,
-                    salt,
-                    keepPasswordAsHash
-                )
-
-                (activity as RegisterLoginActivity).logIntoApp(registeredUser)
+                viewModel.registerUser(login, securePassword, salt, keepPasswordAsHash)
+                        .observe(viewLifecycleOwner, Observer { id ->
+                    val registeredUser = User(id, login, securePassword, salt, keepPasswordAsHash)
+                    (activity as RegisterLoginActivity).logIntoApp(registeredUser)
+                })
             }
         })
     }
