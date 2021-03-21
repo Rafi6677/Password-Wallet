@@ -41,12 +41,9 @@ object UserAuth {
     }
 
     fun generateSecureUserPassword(password: String, salt: String): String {
-        val returnValue: String?
         val securePassword = hashUserPassword(password.toCharArray(), salt.toByteArray())
 
-        returnValue = Base64.getEncoder().encodeToString(securePassword)
-
-        return returnValue
+        return Base64.getEncoder().encodeToString(securePassword)
     }
 
     fun verifyUserPassword(

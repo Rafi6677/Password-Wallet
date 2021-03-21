@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Main">
         <activity android:name=".presentation.passwords.PasswordsActivity"></activity>
-        <activity android:name=".presentation.registerlogin.RegisterLoginActivity">
+        <activity android:name=".presentation.registerlogin.RegisterLoginActivity"
+            android:windowSoftInputMode="adjustPan"  >
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"

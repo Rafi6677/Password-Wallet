@@ -71,8 +71,6 @@ class LoginFragment : Fragment() {
                             .show()
                     (activity as RegisterLoginActivity).hideProgressBar()
                 }
-
-                (activity as RegisterLoginActivity).hideProgressBar()
             }
         })
     }
